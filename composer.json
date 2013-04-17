@@ -7,7 +7,7 @@
   "authors": [
   {
     "name": "Jan Vlnas",
-    "homepage": "https://github.com/jnv",
+    "homepage": "https://github.com/jnv"
   }],
   "require": {
     "silverstripe/framework": "3.*",
