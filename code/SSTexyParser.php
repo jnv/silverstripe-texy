@@ -5,9 +5,10 @@ class SSTexyParser extends TextParser
 	/** @var Texy */
 	protected $texy;
 
-	protected $cache;
-
-	protected $cacheOpts = array();
+	protected static $ALLOWED_TAGS_CONFIG = array(
+			'all' => Texy::ALL,
+			'none' => Texy::NONE
+		);
 
 	public function __construct($content = "")
 	{
@@ -15,9 +16,22 @@ class SSTexyParser extends TextParser
 
 		$this->texy = new SS_Texy();
 		$this->texy->setOutputMode(Texy::HTML5);
-		$this->texy->allowedTags = Texy::ALL;
-		$this->texy->headingModule->top = 2;
 
+		$this->setAllowedTags($this->config()->get('allowed_tags'));
+
+		$this->texy->headingModule->top = $this->config()->get('top_heading');
+
+	}
+
+	public function setAllowedTags($tags) {
+		if(array_key_exists($tags, self::$ALLOWED_TAGS_CONFIG))
+		{
+			$this->texy->allowedTags = self::$ALLOWED_TAGS_CONFIG[$tags];
+		}
+		else
+		{
+			$this->texy->allowedTags = $tags;
+		}
 	}
 
 	public function getTexy()

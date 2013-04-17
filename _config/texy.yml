@@ -1,0 +1,11 @@
+---
+Name: texy
+---
+SSTexyParser:
+  # Level of the top-most heading for headingModule
+  # Default: 2 (H2)
+  top_heading: 2
+
+  # Allowed tags; can be 'all', 'none' or array of tags
+  # Default: all
+  allowed_tags: all
