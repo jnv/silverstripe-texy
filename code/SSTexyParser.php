@@ -14,6 +14,7 @@ class SSTexyParser extends TextParser
 
 	public function __construct($content = "")
 	{
+		Object::__construct(); //FIXME: This should be done by TextParser
 		parent::__construct($content);
 
 		$this->texy = new SS_Texy();
