@@ -1,0 +1,23 @@
+{
+  "name": "jnv/silverstripe-texy",
+  "description": "Add text parser for Texy with caching support",
+  "type": "silverstripe-module",
+  "keywords": ["silverstripe", "texy"],
+  "license": ["BSD-3", "GPLv2", "GPLv3"],
+  "authors": [
+  {
+    "name": "Jan Vlnas",
+    "homepage": "https://github.com/jnv",
+  }],
+  "require": {
+    "silverstripe/framework": "3.*",
+    "composer/installers": "*",
+    "texy/texy": "*"
+  },
+  "support": {
+    "issues": "https://github.com/jnv/silverstripe-texy/issues"
+  },
+  "extra": {
+    "installer-name": "texy"
+  }
+}
