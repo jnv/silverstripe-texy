@@ -1,5 +1,7 @@
 <?php
 
+require_once(BASE_PATH.'/vendor/autoload.php');
+
 class SSTexyParser extends TextParser
 {
 	/** @var Texy */
