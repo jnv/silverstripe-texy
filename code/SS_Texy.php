@@ -17,7 +17,8 @@ class SS_Texy extends Texy
         $this->addHandler('script', array($this, 'scriptHandler'));
     }
 
-    public function config() {
+    public function config()
+    {
         if (!$this->_config_forclass) {
             $this->_config_forclass = Config::inst()->forClass('SS_Texy');
         }
@@ -25,15 +26,15 @@ class SS_Texy extends Texy
         return $this->_config_forclass;
     }
 
-    public function cacheKey($text) {
+    public function cacheKey($text)
+    {
         return md5($text);
     }
 
-    public function process($text, $singleLine = FALSE)
+    public function process($text, $singleLine = false)
     {
         $key = $this->cacheKey($text);
-        if (!($html = $this->cache->load($key)))
-        {
+        if (!($html = $this->cache->load($key))) {
             $html = parent::process($text, $singleLine);
             $this->cache->save($html);
         }
@@ -44,8 +45,7 @@ class SS_Texy extends Texy
     public function processTypo($text)
     {
         $key = $this->cacheKey($text);
-        if (!($html = $this->cache->load($key)))
-        {
+        if (!($html = $this->cache->load($key))) {
             $html = parent::processTypo($text);
             $this->cache->save($html);
         }
@@ -55,17 +55,16 @@ class SS_Texy extends Texy
 
     public function scriptHandler($invocation, $cmd, $args, $raw)
     {
-        switch ($cmd)
-        {
+        switch ($cmd) {
             case 'headingTop':
                 $level = intval($args[0]);
-                if (($level >= 1) && ($level <= 6))
+                if (($level >= 1) && ($level <= 6)) {
                     $invocation->getTexy()->headingModule->top = $level;
+                }
                 return '';
 
             default:
                 return $invocation->proceed();
         }
     }
-
 }
